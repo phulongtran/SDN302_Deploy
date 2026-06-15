@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book a Karaoke Room</title>
+
+    <style>
+
+        body{
+            background:#eef2f7;
+            font-family:Arial, sans-serif;
+        }
+
+        .container{
+            width:700px;
+            margin:30px auto;
+        }
+
+        h1{
+            text-align:center;
+            color:#1f6feb;
+            margin-bottom:20px;
+        }
+
+        .card{
+            background:white;
+            padding:25px;
+            border-radius:10px;
+            box-shadow:0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        label{
+            display:block;
+            margin-top:15px;
+            margin-bottom:8px;
+            color:#1f6feb;
+            font-weight:bold;
+        }
+
+        input,
+        select{
+            width:100%;
+            padding:10px;
+            border:1px solid #ddd;
+            border-radius:5px;
+            box-sizing:border-box;
+        }
+
+        .btn{
+            width:100%;
+            padding:12px;
+            border:none;
+            border-radius:5px;
+            color:white;
+            cursor:pointer;
+            margin-top:15px;
+        }
+
+        .btn-book{
+            background:#1f6feb;
+        }
+
+        .btn-back{
+            background:#f39c12;
+            text-decoration:none;
+            display:block;
+            text-align:center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Book a Karaoke Room</h1>
+
+    <div class="card">
+
+        <form action="/bookings/add" method="POST">
+
+            <label>Customer Name</label>
+
+            <input
+                type="text"
+                name="customerName"
+                placeholder="Enter your name"
+                required
+            >
+
+            <label>Room Number</label>
+
+            <select name="roomNumber">
+
+                <% rooms.forEach(room => { %>
+
+                    <option value="<%= room.roomNumber %>">
+                        <%= room.roomNumber %>
+                    </option>
+
+                <% }) %>
+
+            </select>
+
+            <label>Start Time</label>
+
+            <input
+                type="datetime-local"
+                name="startTime"
+                required
+            >
+
+            <label>End Time</label>
+
+            <input
+                type="datetime-local"
+                name="endTime"
+                required
+            >
+
+            <button class="btn btn-book" type="submit">
+                Book Room
+            </button>
+
+        </form>
+
+        <a href="/bookings" class="btn btn-back">
+            Go Back
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

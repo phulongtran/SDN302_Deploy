@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Booking</title>
+
+    <style>
+
+        body{
+            background:#eef2f7;
+            font-family:Arial;
+        }
+
+        .container{
+            width:700px;
+            margin:20px auto;
+        }
+
+        h1{
+            text-align:center;
+            color:#1f6feb;
+        }
+
+        .card{
+            background:white;
+            padding:25px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,.1);
+        }
+
+        label{
+            display:block;
+            margin-top:15px;
+            margin-bottom:5px;
+            color:#1f6feb;
+            font-weight:bold;
+        }
+
+        input{
+            width:100%;
+            padding:10px;
+            border:1px solid #ddd;
+            border-radius:5px;
+            box-sizing:border-box;
+        }
+
+        .btn{
+            width:100%;
+            padding:12px;
+            margin-top:15px;
+            border:none;
+            color:white;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        .update{
+            background:#1f6feb;
+        }
+
+        .back{
+            background:#f39c12;
+            display:block;
+            text-align:center;
+            text-decoration:none;
+            line-height:40px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Update Booking</h1>
+
+    <div class="card">
+
+        <form
+        action="/bookings/edit/<%= booking._id %>"
+        method="POST">
+
+            <label>Customer Name</label>
+
+            <input
+                type="text"
+                name="customerName"
+                value="<%= booking.customerName %>"
+            >
+
+            <label>Room Number</label>
+
+            <input
+                type="text"
+                name="roomNumber"
+                value="<%= booking.roomNumber %>"
+            >
+
+            <label>Start Time</label>
+
+            <input
+                type="datetime-local"
+                name="startTime"
+            >
+
+            <label>End Time</label>
+
+            <input
+                type="datetime-local"
+                name="endTime"
+            >
+
+            <button
+                class="btn update"
+                type="submit">
+                Update Booking
+            </button>
+
+        </form>
+
+        <a href="/bookings"
+           class="btn back">
+           Go Back
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
